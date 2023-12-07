@@ -1,0 +1,3 @@
+common:
+  development: yes
+  production: hello
