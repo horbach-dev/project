@@ -1,0 +1,43 @@
+name: Test
+on: push
+jobs:
+  lint-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Change directory
+        run: cd client
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+      - name: Lint code
+        run: yarn lint
+  lint-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+      - name: Lint code
+        run: yarn lint
+  build-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Change directory
+        run: cd client
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+      - name: Build App
+        run: yarn build
+  build-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+      - name: Build App
+        run: yarn build
