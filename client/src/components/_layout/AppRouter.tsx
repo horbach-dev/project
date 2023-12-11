@@ -2,6 +2,7 @@
 
 import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+
 import Admin from '$components/_layout/Admin'
 import AppLayout from '$components/_layout/AppLayout'
 import AboutPage from '$components/_layout/pages/AboutPage'
