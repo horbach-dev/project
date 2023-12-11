@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link as LinkRR, NavLink as NavLinkRR } from 'react-router-dom'
 import config from '$config'
-// import LocaleStore from '$stores/LocaleStore'
+import useStore from '$hooks/useStore'
+import LocaleStore from '$stores/LocaleStore'
 
 // links starts with /<locale>/
 const linkWithLocaleRegExp = new RegExp(`^/?(${config.available_locales.join('|')})/`)
@@ -79,8 +80,7 @@ const LinkWrapper = (props: IProps) => {
 }
 
 const Wrapper = (props) => {
-  const locale = 'ru'
-  // const [{ locale }] = useStore(LocaleStore, store => ({ locale: store.locale }))
+  const [{ locale }] = useStore(LocaleStore, store => ({ locale: store.locale }))
 
   return (
     <LinkWrapper
