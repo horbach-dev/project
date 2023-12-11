@@ -1,5 +1,4 @@
 {
-  "extends": "stylelint-config-umbrellio",
   "plugins": [
     "stylelint-order",
     "stylelint-scss",

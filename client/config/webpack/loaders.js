@@ -52,7 +52,7 @@ module.exports = ({ isDev }) => {
                 `,
                 implementation: require('sass'),
                 sassOptions: {
-                  includePaths: [path.resolve(__dirname, '../../src/components/__layout')],
+                  includePaths: [path.resolve(__dirname, '../../src/components')],
                 },
                 sourceMap: true,
               },

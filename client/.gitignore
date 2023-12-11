@@ -1,5 +1,5 @@
 /coverage
 /dist
-/node_modules
 /node_modules/
+/web_assets/
 /project-assets.json

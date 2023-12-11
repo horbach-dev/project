@@ -1,7 +1,7 @@
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const { ESBuildMinifyPlugin } = require('esbuild-loader')
 
-module.exports = ({ isDev }) => {
+module.exports = ({ isDev, env }) => {
   return isDev
     ? {}
     : {
