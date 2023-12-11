@@ -1,5 +1,3 @@
 /dist/
+/config/
 /node_modules/
-/lib/node/
-/lib/partytown/
-config

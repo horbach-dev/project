@@ -1,3 +1,5 @@
 common:
-  development: yes
-  production: hello
+  default_locale: en
+  available_locales:
+    - en
+    - ru
