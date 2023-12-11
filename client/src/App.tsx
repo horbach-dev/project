@@ -11,7 +11,7 @@ const App = () => {
   return (
     <Routes>
       <Route path='/:locale/*' element={<AppRouter />} />
-      <Route index element={<RouterService />}/>
+      <Route index element={<RouterService.LocaleRedirect />}/>
     </Routes>
   )
 }

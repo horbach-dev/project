@@ -10,9 +10,7 @@ export default {
       locale,
       availableLocales: config.available_locales,
     })
+
     cookies.set('locale', locale, { samesite: 'Lax' })
-  },
-  setAvailableLocales (availableLocales) {
-    LocaleStore.mergeOntoState({ availableLocales })
   },
 }
