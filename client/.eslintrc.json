@@ -1,8 +1,6 @@
 {
   "root": true,
   "extends": [
-    "umbrellio",
-    "umbrellio/react",
     "plugin:react-hooks/recommended",
     "plugin:jest-dom/recommended",
     "plugin:testing-library/react",
@@ -91,8 +89,8 @@
         "prefix": ["is", "should", "has", "can", "did", "will", "with", "in"]
       }
     ],
+    "semi": ["error", "never"],
     "no-dupe-else-if": ["error"],
-    "no-extra-parens": ["error"],
     "default-param-last": ["warn"],
     "max-params": ["warn", {
       "max": 2
@@ -140,6 +138,7 @@
         "children": "always"
       }
     ],
+    "object-curly-spacing": ["error", "always"],
     "react/button-has-type": 1,
     "quotes": ["error", "single"],
     "jsx-quotes": ["error", "prefer-single"],

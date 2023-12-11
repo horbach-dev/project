@@ -11,19 +11,26 @@ jobs:
           cd client
           yarn install --frozen-lockfile
           yarn lint
-#      - name: Install deps
-#        run: yarn install --frozen-lockfile
-#      - name: Lint code
-#        run: yarn lint
-  lint-server:
+  types-client:
     runs-on: ubuntu-latest
     steps:
       - name: Get repository code
         uses: actions/checkout@v3
-      - name: Install deps
-        run: yarn install --frozen-lockfile
-      - name: Lint code
-        run: yarn lint
+      - name: Install deps and lint code
+        run: |
+          cd client
+          yarn install --frozen-lockfile
+          yarn check-types
+  tests-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Install deps and build code
+        run: |
+          cd client
+          yarn install --frozen-lockfile
+          yarn test
   build-client:
     runs-on: ubuntu-latest
     steps:
@@ -34,6 +41,15 @@ jobs:
           cd client
           yarn install --frozen-lockfile
           yarn build
+  lint-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+      - name: Lint code
+        run: yarn lint
   build-server:
     runs-on: ubuntu-latest
     steps:

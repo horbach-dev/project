@@ -8,8 +8,9 @@ const AssetsPlugin = require('assets-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const { breakpoints } = require('./breakpoints.json')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = ({ config, env, isDev, pteroAssetsPath }) => {
+module.exports = ({ config, env, isDev, assetsPath }) => {
   const getTranslationsDefault = () => {
     return jsYaml.load(fs.readFileSync(
       path.join(
@@ -18,28 +19,35 @@ module.exports = ({ config, env, isDev, pteroAssetsPath }) => {
       )))
   }
 
+  const srcPath = path.resolve(__dirname, '../../src')
+
   const sharedPlugins = [
     new CopyWebpackPlugin({
       patterns: [
         {
           from: '../public',
-          to: path.resolve(isDev || process.env.BUNDLE_ANALYZER ? '../../../public' : 'dist'),
+          to: path.resolve('dist'),
         },
       ],
     }),
     new webpack.DefinePlugin({
       __CONFIG__: JSON.stringify({
-        stageApi: process.env.STAGE_URL || null,
         ...config,
         env,
-        pp: path.resolve(__dirname, '../../src'),
+        pp: srcPath,
       }),
       __DEV__: JSON.stringify(isDev),
       breakpoints: JSON.stringify(breakpoints),
       __TRANSLATIONS_DEFAULT__: JSON.stringify(getTranslationsDefault()),
     }),
+    new HtmlWebpackPlugin({
+      title: 'Simple project',
+      favicon: srcPath + '/images/logo_seo.jpg',
+      template: srcPath + '/template.html',
+      filename: 'index.html',
+    }),
     new AssetsPlugin({
-      path: pteroAssetsPath,
+      path: assetsPath,
       removeFullPathAutoPrefix: true,
       prettyPrint: true,
       filename: 'project-assets.json',
